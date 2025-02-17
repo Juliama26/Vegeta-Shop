@@ -1,0 +1,92 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum ProductCategory {
+  FUNGI
+  FRUIT
+  VEGETABLE
+  ONION
+  BEANS
+  SPICE
+}
+
+enum DelivetyType {
+  HOME_DELIVERY
+  STORE_PICKUP
+}
+
+model User {
+  id          String        @id @default(cuid())
+  name        String
+  email       String        @unique
+  password    String
+  createAt    DateTime      @default(now()) @map("created_at")
+  updateAt    DateTime      @updatedAt @map("updated_at")
+  Checkout    Checkout[]
+  Transaction Transaction[]
+
+  @@map("users")
+}
+
+model Product {
+  id          String          @id @default(cuid())
+  name        String
+  imageUrl    String
+  description String          @db.Text
+  price       Int             @default(0) @db.Integer
+  itemSold    Int             @default(0) @map("item_sold") @db.Integer
+  rating      Int             @default(0) @db.Integer
+  category    ProductCategory
+  createAt    DateTime        @default(now()) @map("created_at")
+  updateAt    DateTime        @updatedAt @map("updated_at")
+  Checkout    Checkout[]
+
+  @@map("products")
+}
+
+model Checkout {
+  id            String   @id @default(cuid())
+  userId        String   @map("user_id")
+  productId     String   @map("product_id")
+  transactionId String?  @map("transaction_id")
+  qty           Int      @default(0) @db.Integer
+  pricePerItem  Int      @default(0) @map("price_per_item") @db.Integer
+  createAt      DateTime @default(now()) @map("created_at")
+  updateAt      DateTime @updatedAt @map("updated_at")
+
+  user        User         @relation(fields: [userId], references: [id])
+  product     Product      @relation(fields: [productId], references: [id])
+  transaction Transaction? @relation(fields: [transactionId], references: [id])
+
+  @@map("checkouts")
+}
+
+model Transaction {
+  id              String       @id @default(cuid())
+  userId          String       @map("user_id")
+  totalPrice      Int          @default(0) @map("total_price") @db.Integer
+  deliveryFee     Int          @default(0) @map("delivery_fee") @db.Integer
+  asuranceFee     Int          @default(0) @map("asurance_fee") @db.Integer
+  aplicationFee   Int          @default(0) @map("aplication_fee") @db.Integer
+  grandTotalPrice Int          @default(0) @map("grand_total_price") @db.Integer
+  deliveryType    DelivetyType @default(HOME_DELIVERY) @map("deliveryType")
+  createAt        DateTime     @default(now()) @map("created_at")
+  updateAt        DateTime     @updatedAt @map("updated_at")
+
+  user     User       @relation(fields: [userId], references: [id])
+  Checkout Checkout[]
+
+  @@map("transactions")
+}
