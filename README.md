@@ -1,36 +1,35 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Vegeta Shop
 
-## Getting Started
+**Vegeta Shop** adalah sebuah aplikasi e-commerce yang dirancang untuk memudahkan pengguna dalam mencari dan membeli produk-produk dari brand Vegeta.
+Dibangun dengan teknologi **Next.js** untuk Sebagai Framework, **TailwindCSS** untuk desain yang responsif, **PostgreSQL** sebagai database, **Prisma** sebagai ORM untuk manajemen database, dan **Redux Toolkit** untuk manajemen state.
 
-First, run the development server:
+## Fitur Utama
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Kategori Produk**: Telusuri produk berdasarkan kategori yang tersedia.
+- **Keranjang Belanja**: Tambahkan produk ke keranjang belanja dan lakukan pembayaran dengan mudah.
+- **Riwayat Transaksi**: Lihat riwayat transaksi yang telah dilakukan.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Screenshot Aplikasi
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Berikut adalah beberapa screenshot dari aplikasi Vegeta Shop:
+![Vegeta Shop Banner](https://github.com/Juliama26/Vegeta-Shop/blob/main/public/assets/vegeta.png?raw=true)
+*Halaman Utama Vegeta Shop*
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+![Home Page](https://github.com/Juliama26/Vegeta-Shop/blob/main/public/assets/vegeta1.png?raw=true)
+*Halaman Sign In*
 
-## Learn More
+![Product Page](https://github.com/Juliama26/Vegeta-Shop/blob/main/public/assets/vegeta2.png?raw=true)
+*Halaman Produk*
 
-To learn more about Next.js, take a look at the following resources:
+![Cart Page](https://github.com/Juliama26/Vegeta-Shop/blob/main/public/assets/vegeta3.png?raw=true)
+*Halaman Detail Product*
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+![Cart Page](https://github.com/Juliama26/Vegeta-Shop/blob/main/public/assets/vegeta4.png?raw=true)
+*Halaman Card Product*
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Cara Menggunakan
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. **Clone Repository**:
+   ```bash
+   git clone https://github.com/Juliama26/Vegeta-Shop.git
+   cd Vegeta-Shop
